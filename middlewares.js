@@ -25,6 +25,11 @@ function authenticateToken(req, res, next) {
                 'error': 'Token not found'
             })
         }
+    } else {
+        res.status(401);
+        return res.json({
+            'error': 'Token not found'
+        })
     }
 }
 module.exports = {
