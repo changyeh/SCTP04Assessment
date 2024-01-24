@@ -18,7 +18,7 @@ main = (async () => {
             res.send('Hello World!');
         });
 
-        app.post('/busstop', async (req, res) => {
+        app.post('/busstop', authenticateToken, async (req, res) => {
             try {
                 const { BusStopCode, RoadName, Description, Latitude, Longitude, BusServiceNo } = req.body;
                 if ( !BusStopCode || !RoadName || !Description || !Latitude || !Longitude || !BusServiceNo) {
@@ -74,7 +74,7 @@ main = (async () => {
             }
         });
 
-        app.put('/busstop/:id', async (req, res) => {
+        app.put('/busstop/:id', authenticateToken, async (req, res) => {
             try {
                 const busStopId = new ObjectId(req.params.id);
                 const { BusStopCode, RoadName, Description, Latitude, Longitude, BusServiceNo } = req.body;
@@ -114,7 +114,7 @@ main = (async () => {
             }
         });
 
-        app.delete('/busstop/:id', async (req, res) => {
+        app.delete('/busstop/:id', authenticateToken, async (req, res) => {
             try {
                 const busStopId = new ObjectId(req.params.id);
                 const busStop = await db.collection('bus_stop').findOne({_id: busStopId});
