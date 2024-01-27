@@ -1,0 +1,3 @@
+MONGO_URL=your_mongoDB_connection_URL
+DB_NAME=your_DB_name
+JWT_SECRET=your_JWT_secret_key
